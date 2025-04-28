@@ -1,0 +1,99 @@
+
+class Skolens:
+    # Klases līmeņa mainīgais id, kas tiek inkrementēts katram jaunam skolēnam
+    id_count = 1
+
+    def __init__(self, vards, uzvards, sekmes):
+      self.vards = vards  # Vārds
+      self.uzvards = uzvards  # Uzvārds
+      self.sekmes = sekmes  # Saraksts ar atzīmem
+      self.id = Skolens.id_count  # Skolēna ID
+      Skolens.id_count += 1  # Inkrementē ID skaitītāju
+
+def pievienot_jauno_atzime(self, atzime):
+      """Pievieno jaunu atzīmi skolēna sekmju sarakstam."""
+      self.sekmes.append(atzime)
+
+def videja_atzime(self):
+      """Aprēķina skolēna vidējo atzīmi."""
+      if len(self.sekmes) == 0:  # Ja saraksts ir tukšs
+          return 0
+      return sum(self.sekmes) / len(self.sekmes)
+
+   def __str__(self):
+      """Atgriež skolēna informāciju kā tekstu."""
+     sekmes_str = ", ".join(map(str, self.sekmes))  # Sekmes pārvērš tekstā
+     return f"{self.id} - {self.vards} {self.uzvards} - {sekmes_str}"
+        
+        
+        
+        # skola.py
+
+from skolens import Skolens  # Importējam Skolens klasi no skolens.py
+class Skola:
+    def __init__(self, nosaukums):
+        self.nosaukums = nosaukums  # Skolas nosaukums
+        self.skoleni = []  # Saraksts ar skolēniem
+    def pievienot_skolenu(self, skolens):
+        """Pievieno skolēnu skolai"""
+        if isinstance(skolens, Skolens):
+            self.skoleni.append(skolens)
+        else:
+            print("Tikai Skolens objekti var tikt pievienoti.")
+    def izvadit_skolenu_datus(self):
+        """Izvada visus skolēnus un viņu datus"""
+        for skolens in self.skoleni:
+            print(skolens)
+    def skolas_vidēja_atzīme(self):
+        """Aprēķina vidējo atzīmi visiem skolēniem skolā"""
+        total_vidējā = 0
+        skolēnu_skaits = len(self.skoleni)
+        if skolēnu_skaits == 0:
+            return 0
+        for skolens in self.skoleni:
+            total_vidējā += skolens.videja_atzime()
+        return total_vidējā / skolēnu_skaits
+
+
+# Piemērs, kā izmantot Skola klasi
+if __name__ == "__main__":
+    # Izveidojam skolēnus
+    skolens1 = Skolens("Jānis", "Bērziņš", [9, 8, 10])
+    skolens2 = Skolens("Anna", "Kalniņa", [7, 8, 9])
+    
+    # Izveidojam skolu un pievienojam skolēnus
+    skola = Skola("Rīgas 1. vidusskola")
+    skola.pievienot_skolenu(skolens1)
+    skola.pievienot_skolenu(skolens2)
+
+    # Izvadām visus skolēnus un viņu datus
+    print("Skolēnu dati:")
+    skola.izvadit_skolenu_datus()
+
+    # Izvadām skolas vidējo atzīmi
+    print(f"Skolas vidējā atzīme: {skola.skolas_vidēja_atzīme()}")
+    class Skolens:
+    # Klases līmeņa mainīgais, kas automātiski piešķir id
+    id_count = 1
+
+    def __init__(self, vards, uzvards, sekmes):
+        self.vards = vards
+        self.uzvards = uzvards
+        self.sekmes = sekmes
+        self.id = Skolens.id_count  # Piešķir ID no klases līmeņa mainīgā
+        Skolens.id_count += 1  # Inkrementē id skaitītāju katram jaunam skolēnam
+
+    def pievienot_jauno_atzime(self, atzime):
+        """Pievieno jaunu atzīmi skolēna sekmju sarakstam"""
+        self.sekmes.append(atzime)
+
+    def videja_atzime(self):
+        """Aprēķina skolēna vidējo atzīmi"""
+        if len(self.sekmes) == 0:
+            return 0
+        return sum(self.sekmes) / len(self.sekmes)
+
+    def __str__(self):
+        """Atgriež skolēna informāciju kā tekstu"""
+        sekmes_str = ", ".join(map(str, self.sekmes))  # Sekmes kā teksta virkne
+        return f"{self.id} - {self.vards} {self.uzvards} - {sekmes_str}"
